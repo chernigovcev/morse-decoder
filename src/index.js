@@ -40,13 +40,13 @@ const MORSE_TABLE = {
 function decode(expr) {
     
     let text = '';
-    let char = '';
     let a = 0;
 
     for (var i = 0; (expr.length / 10) > i; i++) {
 
+        let char = '';
         for (var e = 0; 5 > e; e++) {
-            if (expr[a] == '*') {
+            if (expr[a] + expr[a + 1] == '**') {
                 text += ' ';
                 a += 10;
                 i++;
@@ -57,8 +57,8 @@ function decode(expr) {
             }
             a += 2;
         }
+        
         text += MORSE_TABLE[char];
-        char = '';
     } 
     return text;
 }
